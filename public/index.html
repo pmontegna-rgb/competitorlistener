@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Competitor & Partner News</title>
+    <link rel="icon" href="/spoton-mark.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="/spoton-mark.svg" alt="SpotOn" class="logo" />
+        <div>
+          <h1>Competitor & Partner News</h1>
+          <p>RSS + Web + LinkedIn monitor (confidence threshold: 80%+)</p>
+        </div>
+      </div>
+      <button id="refreshBtn">Refresh</button>
+    </header>
+
+    <main>
+      <section id="stats" class="stats"></section>
+
+      <section class="filters">
+        <label>
+          Group
+          <select id="groupFilter">
+            <option value="all">All</option>
+            <option value="competitor">Competitor</option>
+            <option value="partner">Partner</option>
+          </select>
+        </label>
+
+        <label>
+          Entity
+          <select id="entityFilter">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label>
+          Channel
+          <select id="channelFilter">
+            <option value="all">All</option>
+            <option value="rss">RSS</option>
+            <option value="web">Web</option>
+            <option value="linkedin">LinkedIn</option>
+          </select>
+        </label>
+
+        <label>
+          Announcement
+          <select id="announcementFilter">
+            <option value="all">All</option>
+            <option value="product_announcement">Product Announcement</option>
+            <option value="business_announcement">Business Announcement</option>
+            <option value="partnership_agreement">Partnership Agreement</option>
+            <option value="pricing_update">Pricing Update</option>
+            <option value="leadership_hiring">Leadership/Hiring</option>
+            <option value="press_coverage">Press Coverage</option>
+            <option value="general_update">General Update</option>
+          </select>
+        </label>
+
+        <label>
+          Timeframe
+          <select id="timeframeFilter">
+            <option value="7d">Last 7 days</option>
+            <option value="30d" selected>Last 30 days</option>
+            <option value="90d">Last 90 days</option>
+            <option value="custom">Custom</option>
+          </select>
+        </label>
+
+        <label>
+          Start Date (Calendar)
+          <input id="startDate" type="date" />
+        </label>
+
+        <label>
+          End Date (Calendar)
+          <input id="endDate" type="date" />
+        </label>
+
+        <label>
+          Search
+          <input id="searchInput" type="text" placeholder="integration, pricing, launch..." />
+        </label>
+
+        <label>
+          Strategic Focus
+          <select id="strategicFilter">
+            <option value="false" selected>All Updates</option>
+            <option value="true">Strategic Only</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="feed" class="feed"></section>
+    </main>
+
+    <template id="itemTemplate">
+      <a class="post" target="_blank" rel="noreferrer">
+        <div class="post-head">
+          <div class="entity"></div>
+          <div class="chips">
+            <span class="chip label"></span>
+            <span class="chip channel"></span>
+          </div>
+        </div>
+        <h3 class="title"></h3>
+        <p class="announcement"></p>
+        <p class="summary"></p>
+        <div class="analyst-note">
+          <p class="an-line an-what"></p>
+          <p class="an-line an-why"></p>
+          <p class="an-line an-watch"></p>
+        </div>
+        <div class="meta">
+          <span class="timestamp"></span>
+          <span class="confidence"></span>
+        </div>
+      </a>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

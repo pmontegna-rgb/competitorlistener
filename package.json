@@ -1,0 +1,15 @@
+{
+  "name": "spoton-competitor-news",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SpotOn Competitive RSS + Web Scrape News Feed",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "collect": "node src/server.js --collect-once"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
