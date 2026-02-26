@@ -72,8 +72,6 @@ npm run collect
 - `GET /api/meta`
 - `GET /api/history`
   - Query: `entity`, `channel`, `url`, `limit`
-- `GET /api/cron`
-  - Scheduled in Vercel every 4 hours
 
 ## Environment
 
@@ -91,7 +89,6 @@ See `.env.example`:
 - `OPENAI_API_KEY` (required only when `AI_NOTES_MODE=openai`)
 - `OPENAI_MODEL` (default `gpt-5`)
 - `MAX_AI_NOTES_PER_RUN` (default `25`)
-- `CRON_SECRET` (optional; required if you want to lock `/api/cron`)
 
 The server auto-loads a local `.env` file at startup.
 
@@ -104,7 +101,6 @@ The server auto-loads a local `.env` file at startup.
 
 `vercel.json` includes:
 - Node 20 runtime for `api/*.js`
-- Cron schedule `0 */4 * * *` calling `/api/cron`
 
 ### Important persistence note
 
@@ -112,3 +108,7 @@ This app currently persists state in `data/store.json`.
 On Vercel, filesystem state is ephemeral, so historical memory may reset between deployments/invocations.
 
 For durable Vercel persistence, next step is moving store/state to a hosted DB/KV/object store.
+
+Collection on Vercel is manual for this POC:
+- Click `Refresh` in the UI, or
+- call `POST /api/refresh`
